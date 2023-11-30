@@ -16,18 +16,20 @@ import scipy.sparse as sps
 import matplotlib.pyplot as plt
 
 
-def solveDuffing(Xpara):
+def solveDuffing(Xpara:numpy.array):
     """
-    Compute the objective function.
+    Compute the frequency response.
 
     Args:
-        X (torch.Tensor): Torch tensor of float64 - Size (ns x 2) - X = [xi,knl]
+        X (torch.Tensor): Array like - Size (ns x 2) - X = [xi,knl]
 
     Raises:
         StopIteration: in the case of no convergence
 
     Returns:
-        y: maximum of the amplitude of the response along frequencies.
+        w_list: List of angular frequencies.
+        Drms: Root Mean Square displacement list
+        Arms: Root Mean Square acceleration list
     """
     
 
