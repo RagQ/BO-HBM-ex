@@ -13,7 +13,6 @@
 import numpy
 import torch
 import scipy.sparse as sps
-import matplotlib.pyplot as plt
 
 
 def solveDuffing(Xpara:numpy.array):
