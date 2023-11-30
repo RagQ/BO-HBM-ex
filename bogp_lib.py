@@ -208,37 +208,6 @@ def get_EImax(gp, bounds, q=1, num_restarts=10, raw_samples=30):
     return candidate, Eimax
 
 
-def get_cEI(gp, Xtest, objective_index=0, constraints={1: (None, 0.0)}):
-    """Get evaluation of Contrained Expected Improvement function from a GP model at points (Xtest).
-
-    Args:
-        gp : trained GP model.
-        Xtest : array of sample points.
-        objective_index (int, optional): index of responses (if many functions are fitted). Defaults to 0.
-        constraints (dict, optional): list of constraints. Defaults to {1: (None, 0.0)}.
-
-    Returns:
-        - array of evaluated Contrained Expected Improvement values by GP.
-    """
-    tr = gp.train_targets
-    train_Z = torch.hstack(
-        (tr[0].reshape(tr.shape[1], 1), tr[1].reshape(tr.shape[1], 1))
-    )
-
-    Zbest = get_best(train_Z, objective_index=objective_index, constraints=constraints)
-
-    EI_c = ConstrainedExpectedImprovement(
-        gp,
-        best_f=Zbest,
-        objective_index=objective_index,
-        constraints=constraints,
-        maximize=False,
-    )
-    Xt = Xtest.reshape(Xtest.shape[0], 1, Xtest.dim())
-
-    return EI_c(Xt).detach()
-
-
 def grid_to_array(X, Y):
     """Convert grid points to array by horizontal concatenation.
 
