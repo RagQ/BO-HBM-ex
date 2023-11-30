@@ -41,7 +41,9 @@ Xp, Yp = torch.meshgrid(xplt, yplt, indexing="xy")
 Xplt = bogp.grid_to_array(Xp, Yp)
 
 # number of experiments for each ns
-nbExp = 2
+nbExp = 30
+# Maximum number of calls to the mechanical solver
+budget = 100
 
 # list of number of samples
 ns_list = [10, 15, 20, 25]
@@ -84,7 +86,7 @@ def ExpOpti(ns, nb=0):
     # Initialization
     it = 0
     delta = 1
-    first_time = True
+
 
     print("=== Create initial GP: ", end="")
     tic = time.time()
@@ -115,34 +117,7 @@ def ExpOpti(ns, nb=0):
     EIg = EI.reshape(Xg.shape)
 
     plt.rc("font", family="serif", size=16)
-    plt.figure()
-    ax1 = plt.subplot()
-    plt.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)
-    plt.margins(0, 0)
-    CSF = ax1.contour(Xg, Yg, Fg, cmap=plt.cm.viridis, levels=numpy.linspace(0, 2, 21))
-    ax1.clabel(
-        CSF, levels=numpy.linspace(0, 2, 11), inline=1, inline_spacing=0, fontsize=15
-    )
-    ax1.set_xticks([])
-    ax1.set_yticks([])
-    ax1.set_xlim(0.1, 1)
-    ax1.set_ylim(0.1, 2)
-    plt.axis("off")
-    plt.savefig(os.path.join(workdir, "ContourObj_" + f"{it:02}" + ".pdf"))
-    plt.close()
-
-    plt.figure()
-    ax2 = plt.subplot()
-    plt.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)
-    plt.margins(0, 0)
-    CSCEI = ax2.contour(Xg, Yg, EIg, cmap=plt.cm.viridis, levels=50)
-    ax2.set_xticks([])
-    ax2.set_yticks([])
-    ax2.set_xlim(0.1, 1)
-    ax2.set_ylim(0.1, 2)
-    plt.axis("off")
-    plt.savefig(os.path.join(workdir, "ContourCEI_" + f"{it:02}" + ".pdf"))
-    plt.close()
+    
 
     # Save Pred
     df = pandas.DataFrame()
@@ -168,6 +143,110 @@ def ExpOpti(ns, nb=0):
     df1["delta"] = [float(delta)]
     df = pandas.concat([df, df1], axis=1)
     df.to_csv(os.path.join(workdir, "Enrich_" + f"{it:02}" + ".csv"), index=None)
+    
+    #Plot
+    plt.figure()
+    ax1 = plt.subplot()
+    CSF = ax1.contour(
+        Xg, Yg, Fg, cmap=plt.cm.viridis, levels=numpy.linspace(0, 2, 21)
+    )
+    ax1.clabel(
+        CSF,
+        levels=numpy.linspace(0, 2, 11),
+        inline=1,
+        inline_spacing=0,
+        fontsize=15,
+    )
+    ax1.set_xlim(0.1, 1)
+    ax1.set_ylim(0.1, 2)
+    ax1.plot(  #Initial Samples
+        Xs[:, 0],
+        Xs[:, 1],
+        "D",
+        label="Initial Samples",
+        color="tab:red",
+        zorder=100,
+        markersize=8,
+    )
+    ax1.scatter(
+        Xbest[0],
+        Xbest[1],
+        marker="$\\bigodot$",
+        color="black",
+        linestyle="None",
+        zorder=90,
+        label="Minimum",
+        s=384,
+        alpha=1,
+    )
+    plt.savefig(os.path.join(workdir, "ContourObj_" + f"{it:02}" + ".pdf"))
+    plt.close()
+
+    plt.figure()
+    ax2 = plt.subplot()
+    CSCEI = ax2.contour(Xg, Yg, EIg, cmap=plt.cm.YlOrRd, levels=50)
+    ax2.plot(
+        XEImax[0],
+        XEImax[1],
+        'o',
+        color='tab:green',
+        zorder=100,
+        markersize=8,)
+    ax2.set_xlim(0.1, 1)
+    ax2.set_ylim(0.1, 2)
+    plt.savefig(os.path.join(workdir, "ContourCEI_" + f"{it:02}" + ".pdf"))
+    plt.close()
+    
+    plt.figure()
+    ax1 = plt.subplot(projection='3d')
+    ax1.plot_surface(
+        Xg, Yg, Fg, cmap=plt.cm.viridis
+    )
+    ax1.set_xlim(0.1, 1)
+    ax1.set_ylim(0.1, 2)
+    ax1.set_zlim(0.,4.5)
+    ax1.plot(  #Initial Samples
+        numpy.array(Xs[:, 0]),
+        numpy.array(Xs[:, 1]),
+        numpy.array(Zs[:, 0]),
+        marker="D",
+        linestyle="None",
+        label="Initial Samples",
+        color="tab:red",
+        zorder=100,
+        markersize=8,
+    )
+    ax1.scatter(
+        Xbest[0],
+        Xbest[1],
+        Zbest,
+        marker="$\\bigodot$",
+        color="black",
+        linestyle="None",
+        zorder=90,
+        label="Minimum",
+        s=384,
+        alpha=1,
+    )
+    plt.savefig(os.path.join(workdir, "SurfaceObj_" + f"{it:02}" + ".pdf"))
+    plt.close()
+
+    plt.figure()
+    ax2 = plt.subplot(projection='3d')
+    ax2.plot_surface(Xg, Yg, EIg, cmap=plt.cm.YlOrRd)
+    ax2.plot(
+        XEImax[0],
+        XEImax[1],
+        EImax,
+        marker='o',
+        linestyle="None",
+        color='tab:green',
+        zorder=100,
+        markersize=8,)
+    ax2.set_xlim(0.1, 1)
+    ax2.set_ylim(0.1, 2)
+    plt.savefig(os.path.join(workdir, "SurfaceCEI_" + f"{it:02}" + ".pdf"))
+    plt.close()
 
     dfg = pandas.DataFrame(
         [
@@ -200,7 +279,7 @@ def ExpOpti(ns, nb=0):
 
     # Iterations
     print("=== Start enrichment iterations ===")
-    while Nit < 50:
+    while Nit < budget:
         it = it + 1
         print("=== Iteration: {} (ns={}, nb={}) ===".format(it, ns, nb))
         # enrichment
@@ -213,8 +292,8 @@ def ExpOpti(ns, nb=0):
             Sm,
             bndaqf,
             Noptim=100,
-            num_restarts=250,
-            raw_samples=300,
+            num_restarts=150,
+            raw_samples=150,
         )
         print("Done - {}s ".format(time.time() - tic))
 
@@ -240,40 +319,6 @@ def ExpOpti(ns, nb=0):
         Fg = Zpred[:, 0].reshape(Xg.shape)
         EIg = EI.reshape(Xg.shape)
 
-        plt.figure()
-        ax1 = plt.subplot()
-        plt.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)
-        plt.margins(0, 0)
-        CSF = ax1.contour(
-            Xg, Yg, Fg, cmap=plt.cm.viridis, levels=numpy.linspace(0, 2, 21)
-        )
-        ax1.clabel(
-            CSF,
-            levels=numpy.linspace(0, 2, 11),
-            inline=1,
-            inline_spacing=0,
-            fontsize=15,
-        )
-        ax1.set_xticks([])
-        ax1.set_yticks([])
-        ax1.set_xlim(0.1, 1)
-        ax1.set_ylim(0.1, 2)
-        plt.axis("off")
-        plt.savefig(os.path.join(workdir, "ContourObj_" + f"{it:02}" + ".pdf"))
-        plt.close()
-
-        plt.figure()
-        ax2 = plt.subplot()
-        plt.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)
-        plt.margins(0, 0)
-        CSCEI = ax2.contour(Xg, Yg, EIg, cmap=plt.cm.viridis, levels=50)
-        ax2.set_xticks([])
-        ax2.set_yticks([])
-        ax2.set_xlim(0.1, 1)
-        ax2.set_ylim(0.1, 2)
-        plt.axis("off")
-        plt.savefig(os.path.join(workdir, "ContourCEI_" + f"{it:02}" + ".pdf"))
-        plt.close()
 
         # Save Pred
         df = pandas.DataFrame()
@@ -309,6 +354,151 @@ def ExpOpti(ns, nb=0):
         df1["delta"] = [float(delta)]
         df = pandas.concat([df, df1], axis=1)
         df.to_csv(os.path.join(workdir, "Enrich_" + f"{it:02}" + ".csv"), index=None)
+        
+        #Plot
+        plt.figure()
+        ax1 = plt.subplot()
+        CSF = ax1.contour(
+            Xg, Yg, Fg, cmap=plt.cm.viridis, levels=numpy.linspace(0, 2, 21)
+        )
+        ax1.clabel(
+            CSF,
+            levels=numpy.linspace(0, 2, 11),
+            inline=1,
+            inline_spacing=0,
+            fontsize=15,
+        )
+        ax1.set_xlim(0.1, 1)
+        ax1.set_ylim(0.1, 2)
+        ax1.plot(  #Initial Samples
+            Xs[:, 0],
+            Xs[:, 1],
+            "D",
+            label="Initial Samples",
+            color="tab:red",
+            zorder=100,
+            markersize=8,
+        )
+        ax1.plot( #Added Samples
+            Xm[ns:-1, 0],
+            Xm[ns:-1, 1],
+            "o",
+            label="Added Samples",
+            color="tab:red",
+            zorder=100,
+            markersize=8,
+        )
+        ax1.plot( #New point
+            Xm[-1, 0],
+            Xm[-1, 1],
+            "s",
+            label="New Sample",
+            color="#ccff00",
+            zorder=100,
+            markersize=8,
+        )
+        ax1.scatter(
+            Xbest[0],
+            Xbest[1],
+            marker="$\\bigodot$",
+            color="black",
+            linestyle="None",
+            zorder=90,
+            label="Minimum",
+            s=384,
+            alpha=1,
+        )
+        plt.savefig(os.path.join(workdir, "ContourObj_" + f"{it:02}" + ".pdf"))
+        plt.close()
+
+        plt.figure()
+        ax2 = plt.subplot()
+        CSCEI = ax2.contour(Xg, Yg, EIg, cmap=plt.cm.YlOrRd, levels=50)
+        ax2.plot(
+            XEImax[0],
+            XEImax[1],
+            'o',
+            color='tab:green',
+            zorder=100,
+            markersize=8,)
+        ax2.set_xlim(0.1, 1)
+        ax2.set_ylim(0.1, 2)
+        plt.savefig(os.path.join(workdir, "ContourCEI_" + f"{it:02}" + ".pdf"))
+        plt.close()
+        
+        
+        plt.figure()
+        ax1 = plt.subplot(projection='3d')
+        ax1.plot_surface(
+            Xg, Yg, Fg, cmap=plt.cm.viridis
+        )
+        ax1.set_xlim(0.1, 1)
+        ax1.set_ylim(0.1, 2)
+        ax1.set_zlim(0.,4.5)
+        ax1.plot(  #Initial Samples
+            numpy.array(Xs[:, 0]),
+            numpy.array(Xs[:, 1]),
+            numpy.array(Zs[:, 0]),
+            marker="D",
+            linestyle="None",
+            label="Initial Samples",
+            color="tab:red",
+            zorder=100,
+            markersize=8,
+        )
+        ax1.plot( #Added Samples
+            numpy.array(Xm[ns:-1, 0]),
+            numpy.array(Xm[ns:-1, 1]),
+            numpy.array(Zm[ns:-1, 0]),
+            marker = "o",
+            linestyle = 'None',
+            label="Added Samples",
+            color="tab:red",
+            zorder=100,
+            markersize=8,
+        )
+        ax1.plot( #New point
+            Xm[-1, 0],
+            Xm[-1, 1],
+            Zm[-1,0],
+            marker = "s",
+            linestyle = 'None',
+            label="New Sample",
+            color="#ccff00",
+            zorder=100,
+            markersize=8,
+        )
+        ax1.scatter(
+            Xbest[0],
+            Xbest[1],
+            Zbest,
+            marker="$\\bigodot$",
+            color="black",
+            linestyle="None",
+            zorder=90,
+            label="Minimum",
+            s=384,
+            alpha=1,
+        )
+        plt.savefig(os.path.join(workdir, "SurfaceObj_" + f"{it:02}" + ".pdf"))
+        plt.close()
+
+        plt.figure()
+        ax2 = plt.subplot(projection='3d')
+        ax2.plot_surface(Xg, Yg, EIg, cmap=plt.cm.YlOrRd)
+        ax2.plot(
+            XEImax[0],
+            XEImax[1],
+            EImax,
+            marker = 'o',
+            linestyle = 'None',
+            color='tab:green',
+            zorder=100,
+            markersize=8,)
+        ax2.set_xlim(0.1, 1)
+        ax2.set_ylim(0.1, 2)
+        plt.savefig(os.path.join(workdir, "SurfaceCEI_" + f"{it:02}" + ".pdf"))
+        plt.close()
 
         dfg2 = pandas.DataFrame(
             [
@@ -338,118 +528,9 @@ def ExpOpti(ns, nb=0):
         )
         dfg = pandas.concat([dfg, dfg2])
 
-    
-        first_time = False
-        plt.figure()
-        ax1 = plt.subplot()
-        CSF = ax1.contour(
-            Xg, Yg, Fg, cmap=plt.cm.viridis, levels=numpy.linspace(0, 2, 21)
-        )
-        ax1.clabel(
-            CSF,
-            levels=numpy.linspace(0, 2, 11),
-            inline=1,
-            inline_spacing=0,
-            fontsize=15,
-        )
-        ax1.plot(
-            Xs[:, 0],
-            Xs[:, 1],
-            "D",
-            label="Initial Samples",
-            color="tab:red",
-            zorder=100,
-            markersize=8,
-        )
-        ax1.plot(
-            Xm[ns:-1, 0],
-            Xm[ns:-1, 1],
-            "o",
-            label="Added Samples",
-            color="tab:red",
-            zorder=100,
-            markersize=8,
-        )
-        ax1.plot(
-            Xm[-1, 0],
-            Xm[-1, 1],
-            "o",
-            label="New Samples",
-            color="tab:green",
-            zorder=100,
-            markersize=8,
-        )
-        ax1.scatter(
-            Xbest[0],
-            Xbest[1],
-            marker="$\\bigodot$",
-            color="black",
-            linestyle="None",
-            zorder=90,
-            label="Minimum",
-            s=384,
-            alpha=1,
-        )
-        ax1.set_xticks([])
-        ax1.set_yticks([])
-        ax1.set_xlim(0.1, 1)
-        ax1.set_ylim(0.1, 2)
-        plt.savefig(os.path.join(workdir, "EnrichDelta_it" + f"{it:02}" + ".pdf"))
-        plt.close()
-
-    plt.figure()
-    ax1 = plt.subplot()
-    CSF = ax1.contour(Xg, Yg, Fg, cmap=plt.cm.viridis, levels=numpy.linspace(0, 2, 21))
-    ax1.clabel(
-        CSF, levels=numpy.linspace(0, 2, 11), inline=1, inline_spacing=0, fontsize=15
-    )
-    ax1.plot(
-        Xs[:, 0],
-        Xs[:, 1],
-        "D",
-        label="Initial Samples",
-        color="tab:red",
-        zorder=100,
-        markersize=8,
-    )
-    ax1.plot(
-        Xm[ns:-1, 0],
-        Xm[ns:-1, 1],
-        "o",
-        label="Added Samples",
-        color="tab:red",
-        zorder=100,
-        markersize=8,
-    )
-    ax1.plot(
-        Xm[-1, 0],
-        Xm[-1, 1],
-        "o",
-        label="New Samples",
-        color="tab:green",
-        zorder=100,
-        markersize=8,
-    )
-    ax1.scatter(
-        Xbest[0],
-        Xbest[1],
-        marker="$\\bigodot$",
-        color="black",
-        linestyle="None",
-        zorder=90,
-        label="Minimum",
-        s=384,
-        alpha=1,
-    )
-    ax1.set_xticks([])
-    ax1.set_yticks([])
-    ax1.set_xlim(0.1, 1)
-    ax1.set_ylim(0.1, 2)
-    plt.savefig(os.path.join(workdir, "EnrichNit40" + ".pdf"))
-    plt.close()
-
     return dfg
 
+ns_list=[15]
 
 dflist = []
 dfStat = pandas.DataFrame()
