@@ -16,8 +16,7 @@ import scipy.sparse as sps
 import matplotlib.pyplot as plt
 
 
-# Objective function
-def fobjDuffing(X: torch.Tensor):
+def solveDuffing(Xpara):
     """
     Compute the objective function.
 
@@ -30,9 +29,7 @@ def fobjDuffing(X: torch.Tensor):
     Returns:
         y: maximum of the amplitude of the response along frequencies.
     """
-    # Output
-    ns = X.shape[0]
-    y = torch.zeros((ns, 1)).double()
+    
 
     # Oscillator definition
     m = 1  # Mass (kg)
@@ -50,130 +47,155 @@ def fobjDuffing(X: torch.Tensor):
     w0 = 0.01  # Starting angular frequency (rad)
     wf = 2.5  # Ending angular frequency (rad)
 
-    for ni in range(ns):
-        xi = float(X[ni, 0])  # Damping
-        knl = float(X[ni, 1])  # Nonlinear stiffness
-        # Initialization --------------------------------------------------------
-        w_list = []  # list of frequencies
-        qh_list = []  # list of Fourrier coefficients
-        fnlh_list = []  # list of nonlinear terms
 
-        fexth = numpy.zeros(2 * nh + 1)  # Excitation force fourrier coefficients
-        fexth[1] = f0
+    xi = float(Xpara[0])  # Damping
+    knl = float(Xpara[1])  # Nonlinear stiffness
+    # Initialization --------------------------------------------------------
+    w_list = []  # list of frequencies
+    qh_list = []  # list of Fourrier coefficients
+    fnlh_list = []  # list of nonlinear terms
 
-        F = numpy.zeros((2 * nh + 1, Nt))  # Direct Fourier transform matrix
-        F[0] = 0.5 * numpy.ones(Nt)
-        for i in range(1, nh):
-            for j in range(Nt):
-                F[2 * i - 1][j] = numpy.cos(i * 2 * numpy.pi * j / Nt)
-                F[2 * i][j] = numpy.sin(i * 2 * numpy.pi * j / Nt)
-        i = nh
-        if nh == Nt / 2:  # if Nt even
-            for j in range(Nt):
-                F[2 * i - 1][j] = 0.5 * numpy.cos(i * 2 * numpy.pi * j / Nt)
-                F[2 * i][j] = 0.5 * numpy.sin(i * 2 * numpy.pi * j / Nt)
-        else:  # if Nt odd
-            for j in range(Nt):
-                F[2 * i - 1][j] = numpy.cos(i * 2 * numpy.pi * j / Nt)
-                F[2 * i][j] = numpy.sin(i * 2 * numpy.pi * j / Nt)
-        Fd = sps.csc_matrix(2.0 / Nt * F)
+    fexth = numpy.zeros(2 * nh + 1)  # Excitation force fourrier coefficients
+    fexth[1] = f0
 
-        F = numpy.zeros((Nt, 2 * nh + 1))  # Inverse Fourier transform matrix
-        F[:, 0] = numpy.ones(Nt)
-        for i in range(Nt):
-            for j in range(1, nh + 1):
-                F[i][2 * j - 1] = numpy.cos(j * 2 * numpy.pi * i / Nt)
-                F[i][2 * j] = numpy.sin(j * 2 * numpy.pi * i / Nt)
-        Fi = sps.csc_matrix(F)
+    F = numpy.zeros((2 * nh + 1, Nt))  # Direct Fourier transform matrix
+    F[0] = 0.5 * numpy.ones(Nt)
+    for i in range(1, nh):
+        for j in range(Nt):
+            F[2 * i - 1][j] = numpy.cos(i * 2 * numpy.pi * j / Nt)
+            F[2 * i][j] = numpy.sin(i * 2 * numpy.pi * j / Nt)
+    i = nh
+    if nh == Nt / 2:  # if Nt even
+        for j in range(Nt):
+            F[2 * i - 1][j] = 0.5 * numpy.cos(i * 2 * numpy.pi * j / Nt)
+            F[2 * i][j] = 0.5 * numpy.sin(i * 2 * numpy.pi * j / Nt)
+    else:  # if Nt odd
+        for j in range(Nt):
+            F[2 * i - 1][j] = numpy.cos(i * 2 * numpy.pi * j / Nt)
+            F[2 * i][j] = numpy.sin(i * 2 * numpy.pi * j / Nt)
+    Fd = sps.csc_matrix(2.0 / Nt * F)
 
-        # -----------------------------------------------------------------------
+    F = numpy.zeros((Nt, 2 * nh + 1))  # Inverse Fourier transform matrix
+    F[:, 0] = numpy.ones(Nt)
+    for i in range(Nt):
+        for j in range(1, nh + 1):
+            F[i][2 * j - 1] = numpy.cos(j * 2 * numpy.pi * i / Nt)
+            F[i][2 * j] = numpy.sin(j * 2 * numpy.pi * i / Nt)
+    Fi = sps.csc_matrix(F)
 
-        # First point -----------------------------------------------------------
-        qh = numpy.zeros(2 * nh + 1)  # HBM unknowns
-        w = w0
-        Q = f0 / (-(w**2) * m + w * xi * 1j + k)  # Initial guess = linear solution
-        qh[1] = abs(Q) * numpy.cos(numpy.angle(Q))  # Fourier coefficients
-        qh[2] = -abs(Q) * numpy.sin(numpy.angle(Q))
+    # -----------------------------------------------------------------------
 
-        Z = Build_Z(w, m, xi, k, nh)
+    # First point -----------------------------------------------------------
+    qh = numpy.zeros(2 * nh + 1)  # HBM unknowns
+    w = w0
+    Q = f0 / (-(w**2) * m + w * xi * 1j + k)  # Initial guess = linear solution
+    qh[1] = abs(Q) * numpy.cos(numpy.angle(Q))  # Fourier coefficients
+    qh[2] = -abs(Q) * numpy.sin(numpy.angle(Q))
 
-        Mag = 1
-        it = 0
-        while Mag > eps_hbm:  # HBM iterations
-            it = it + 1
-            fnlh, dfnlh = Buildfnlh(qh, nh, Nt, knl, Fd, Fi)  # Nonlinear terms
-            rh = Z.dot(qh) + fnlh - fexth  # Residual
-            Jrh = Z + dfnlh  # Jacobian /qh
-            Dqh = sps.linalg.spsolve(Jrh, -rh)  # Increment
-            qh = qh + Dqh
-            Mag = numpy.linalg.norm(rh)
-            if it == it_max:
-                raise StopIteration("Initialization failed - No convergence")
+    Z = Build_Z(w, m, xi, k, nh)
+
+    Mag = 1
+    it = 0
+    while Mag > eps_hbm:  # HBM iterations
+        it = it + 1
+        fnlh, dfnlh = Buildfnlh(qh, nh, Nt, knl, Fd, Fi)  # Nonlinear terms
+        rh = Z.dot(qh) + fnlh - fexth  # Residual
+        Jrh = Z + dfnlh  # Jacobian /qh
+        Dqh = sps.linalg.spsolve(Jrh, -rh)  # Increment
+        qh = qh + Dqh
+        Mag = numpy.linalg.norm(rh)
+        if it == it_max:
+            raise StopIteration("Initialization failed - No convergence")
+
+    w_list.append(w)
+    qh_list.append(qh)
+    fnlh_list.append(fnlh)
+
+    # -----------------------------------------------------------------------
+
+    # Arc length continuation -----------------------------------------------
+    ds = dsmax / 5
+    dZ = Build_dZ(w, m, xi, nh)  # dZ/dw
+    Jrw = dZ.dot(qh)[..., None]  # Jacobian /qh
+    while w < wf:
+        # Tangent Vector
+        t = sps.linalg.spsolve(Jrh, -Jrw)
+        sgn = numpy.linalg.slogdet(Jrh.toarray())[0]
+        sigma = w / numpy.linalg.norm(qh)  # Scaling
+        tw = (
+            sgn * 1 / numpy.sqrt(1 + (sigma * t.T).dot(sigma * t))
+        )  # Tangent vector
+        tqh = tw * t.T
+
+        ds, w, qh, fnlh, dfnlh, Jrh, Jrw, it = p_arc_HBM(
+            ds,
+            qh,
+            w,
+            tqh,
+            tw,
+            m,
+            xi,
+            k,
+            knl,
+            nh,
+            Nt,
+            dsmin,
+            it_tar,
+            eps_hbm,
+            fexth,
+            Fd,
+            Fi,
+        )
 
         w_list.append(w)
         qh_list.append(qh)
         fnlh_list.append(fnlh)
 
-        # -----------------------------------------------------------------------
+        # ds adaptation
+        ds = ds * (2 ** ((it_tar - it) / it_tar))
+        if ds > dsmax:
+            ds = dsmax
 
-        # Arc length continuation -----------------------------------------------
-        ds = dsmax / 5
-        dZ = Build_dZ(w, m, xi, nh)  # dZ/dw
-        Jrw = dZ.dot(qh)[..., None]  # Jacobian /qh
-        while w < wf:
-            # Tangent Vector
-            t = sps.linalg.spsolve(Jrh, -Jrw)
-            sgn = numpy.linalg.slogdet(Jrh.toarray())[0]
-            sigma = w / numpy.linalg.norm(qh)  # Scaling
-            tw = (
-                sgn * 1 / numpy.sqrt(1 + (sigma * t.T).dot(sigma * t))
-            )  # Tangent vector
-            tqh = tw * t.T
+    # -----------------------------------------------------------------------
 
-            ds, w, qh, fnlh, dfnlh, Jrh, Jrw, it = p_arc_HBM(
-                ds,
-                qh,
-                w,
-                tqh,
-                tw,
-                m,
-                xi,
-                k,
-                knl,
-                nh,
-                Nt,
-                dsmin,
-                it_tar,
-                eps_hbm,
-                fexth,
-                Fd,
-                Fi,
-            )
+    # Arms/Drms computation ------------------------------------------------------
+    Arms = numpy.zeros(len(w_list)) # RMS accelerations
+    Drms = numpy.zeros(len(w_list)) # RMS displacements
+    W_blocks = [numpy.zeros((1, 1))]
+    for i in range(1, nh + 1):
+        W_blocks.append(numpy.array([[0, i], [-i, 0]]))
+    W = sps.block_diag(W_blocks, "csc", "float")  # Differential operator
+    for i in range(len(w_list)):
+        ddqh = w_list[i] ** 2 * W.dot(
+            W.dot(qh_list[i])
+        )  # Fourier coefficient of the acceleration
+        Arms[i] = numpy.sqrt(numpy.sum(0.5 * ddqh**2))
+        Drms[i] = numpy.sqrt(numpy.sum(0.5 * qh_list[i]**2))
+    # -----------------------------------------------------------------------
 
-            w_list.append(w)
-            qh_list.append(qh)
-            fnlh_list.append(fnlh)
+    return w_list,Drms,Arms
 
-            # ds adaptation
-            ds = ds * (2 ** ((it_tar - it) / it_tar))
-            if ds > dsmax:
-                ds = dsmax
+# Objective function
+def fobjDuffing(X: torch.Tensor):
+    """
+    Compute the objective function.
 
-        # -----------------------------------------------------------------------
+    Args:
+        X (torch.Tensor): Torch tensor of float64 - Size (ns x 2) - X = [xi,knl]
 
-        # Arms computation ------------------------------------------------------
-        Arms = numpy.zeros(len(w_list))
-        W_blocks = [numpy.zeros((1, 1))]
-        for i in range(1, nh + 1):
-            W_blocks.append(numpy.array([[0, i], [-i, 0]]))
-        W = sps.block_diag(W_blocks, "csc", "float")  # Differential operator
-        for i in range(len(w_list)):
-            ddqh = w_list[i] ** 2 * W.dot(
-                W.dot(qh_list[i])
-            )  # Fourier coefficient of the acceleration
-            Arms[i] = numpy.sqrt(numpy.sum(0.5 * ddqh**2))
-        # -----------------------------------------------------------------------
+    Raises:
+        StopIteration: in the case of no convergence
 
+    Returns:
+        y: maximum of the amplitude of the response along frequencies.
+    """
+    # Output
+    ns = X.shape[0]    
+    y = torch.zeros((ns, 1)).double()
+    
+    #along parameter's sets
+    for ni in range(ns):        
+        _,_,Arms = solveDuffing(numpy.array(X[ni, :]))
         y[ni, 0] = numpy.max(Arms)
 
     return y

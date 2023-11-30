@@ -1,4 +1,4 @@
-#### Main execution files ####
+#### Main execution file ####
 #### provided in CBO-HBM-ex ####
 #### Author: Quentin Ragueneau ####
 #### url: http://github.com/XXX/CBO-HBM-ex.git ####
@@ -338,64 +338,64 @@ def ExpOpti(ns, nb=0):
         )
         dfg = pandas.concat([dfg, dfg2])
 
-        if delta < 0.01 and first_time:
-            first_time = False
-            plt.figure()
-            ax1 = plt.subplot()
-            CSF = ax1.contour(
-                Xg, Yg, Fg, cmap=plt.cm.viridis, levels=numpy.linspace(0, 2, 21)
-            )
-            ax1.clabel(
-                CSF,
-                levels=numpy.linspace(0, 2, 11),
-                inline=1,
-                inline_spacing=0,
-                fontsize=15,
-            )
-            ax1.plot(
-                Xs[:, 0],
-                Xs[:, 1],
-                "D",
-                label="Initial Samples",
-                color="tab:red",
-                zorder=100,
-                markersize=8,
-            )
-            ax1.plot(
-                Xm[ns:-1, 0],
-                Xm[ns:-1, 1],
-                "o",
-                label="Added Samples",
-                color="tab:red",
-                zorder=100,
-                markersize=8,
-            )
-            ax1.plot(
-                Xm[-1, 0],
-                Xm[-1, 1],
-                "o",
-                label="New Samples",
-                color="tab:green",
-                zorder=100,
-                markersize=8,
-            )
-            ax1.scatter(
-                Xbest[0],
-                Xbest[1],
-                marker="$\\bigodot$",
-                color="black",
-                linestyle="None",
-                zorder=90,
-                label="Minimum",
-                s=384,
-                alpha=1,
-            )
-            ax1.set_xticks([])
-            ax1.set_yticks([])
-            ax1.set_xlim(0.1, 1)
-            ax1.set_ylim(0.1, 2)
-            plt.savefig(os.path.join(workdir, "EnrichDelta_it" + f"{it:02}" + ".pdf"))
-            plt.close()
+    
+        first_time = False
+        plt.figure()
+        ax1 = plt.subplot()
+        CSF = ax1.contour(
+            Xg, Yg, Fg, cmap=plt.cm.viridis, levels=numpy.linspace(0, 2, 21)
+        )
+        ax1.clabel(
+            CSF,
+            levels=numpy.linspace(0, 2, 11),
+            inline=1,
+            inline_spacing=0,
+            fontsize=15,
+        )
+        ax1.plot(
+            Xs[:, 0],
+            Xs[:, 1],
+            "D",
+            label="Initial Samples",
+            color="tab:red",
+            zorder=100,
+            markersize=8,
+        )
+        ax1.plot(
+            Xm[ns:-1, 0],
+            Xm[ns:-1, 1],
+            "o",
+            label="Added Samples",
+            color="tab:red",
+            zorder=100,
+            markersize=8,
+        )
+        ax1.plot(
+            Xm[-1, 0],
+            Xm[-1, 1],
+            "o",
+            label="New Samples",
+            color="tab:green",
+            zorder=100,
+            markersize=8,
+        )
+        ax1.scatter(
+            Xbest[0],
+            Xbest[1],
+            marker="$\\bigodot$",
+            color="black",
+            linestyle="None",
+            zorder=90,
+            label="Minimum",
+            s=384,
+            alpha=1,
+        )
+        ax1.set_xticks([])
+        ax1.set_yticks([])
+        ax1.set_xlim(0.1, 1)
+        ax1.set_ylim(0.1, 2)
+        plt.savefig(os.path.join(workdir, "EnrichDelta_it" + f"{it:02}" + ".pdf"))
+        plt.close()
 
     plt.figure()
     ax1 = plt.subplot()

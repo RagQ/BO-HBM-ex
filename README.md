@@ -2,7 +2,7 @@
 
 ## Description
 
-The Python's tool `BO-HBM-ex` shows an example of application of Bayesian Optimization [1] on a Duffing problem [2].
+The Python's tool `BO-HBM-ex` shows an example of the application of Bayesian Optimization [1] on a Duffing problem [2]. The 
 
 ## Installation
 
@@ -11,9 +11,9 @@ Get the source code from this repository. The example can be run after installat
 
 ## Usage
 
-The file `OptiExp.py` can be run using `Python 3` It will generate data of Bayesian Optimization's iterations. These data will be available on the directory `ExpOptimDuffing` which contains data for samples sets containing 10, 20 and 25 samples. 
+The file `OptiExp.py` can be run using `Python 3`. It will generate data of Bayesian Optimization's iterations. These data will be available on the directory `ExpOptimDuffing` which contains data for sample sets containing 10, 20 and 25 samples. 
 
-The code has been executed with the following version of Python and librairies:
+The code has been executed with the following version of Python and libraries:
 ``````
 - Python 3.10.9
 - numpy 1.26.2
