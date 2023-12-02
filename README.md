@@ -27,9 +27,9 @@ The file `respDuffing.py` provides frequencies responses for acceleration on PDF
 ![anim_Arms](/illus/anim_Arms.gif)
 
 
-AA                         |  BB
-:-------------------------:|:-------------------------:
-![Arms_xi15](illus/Arms_xi15.png) |  ![Arms_xi30](/illus/Arms_xi30.png)
+AA | BB
+:---:|:---:
+![Arms_xi15](illus/Arms_xi15.png) | ![Arms_xi30](/illus/Arms_xi30.png)
 
 $\xi=0.15$                 |  $\xi=0.3$
 :-------------------------:|:-------------------------:
