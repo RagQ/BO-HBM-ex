@@ -2,7 +2,7 @@
 
 ## Description
 
-The Python's tool `BO-HBM-ex` shows an example of the application of Bayesian Optimization [1] on a Duffing problem [2]. The 
+The Python's tool `BO-HBM-ex` shows an example of the application of Bayesian Optimization [1] on a Duffing problem [2]. The Duffing's oscillator problem is here solved using Harmonic Balance Method and a continuation technique.
 
 ## Installation
 
@@ -11,15 +11,39 @@ Get the source code from this repository. The example can be run after installat
 
 ## Usage
 
+The Python's scripts can be run only with Python 3.
+
 ### Run solver of Duffing oscillator
+The file `respDuffing.py` provides frequencies responses for acceleration on PDF pictures for $\xi=\{0.15, 0.3, 0.5, 1.\}$ and $k_{nl}=\{0.25,0.5,0.75,...,2\}$. Pictures are stored in `ParamDuffing` folder.
+
+$\xi=0.15$                 |  $\xi=0.3$
+:-------------------------:|:-------------------------:
+![](./illus/Arms_xi15.png) |  ![](./illus/Arms_xi30.png)
+
+$\xi=0.5$                  |  $\xi=1$
+:-------------------------:|:-------------------------:
+![](./illus/Arms_xi50.png) |  ![](./illus/Arms_xi100.png)
+
+Animations of large set of values of $k_{nl}$ for $\xi=0.15$:
+$q_{\mathrm{RMS}}$         |  $\ddot{q}_{\mathrm{RMS}}$
+:-------------------------:|:-------------------------:
+![](./illus/anim_Drms.gif) |  ![](./illus/anim_Arms.gif)
 
 ### Run Bayesian Optimization on Duffing oscillator
 
-The file `OptiExp.py` can be run using `Python 3`. It will generate data of Bayesian Optimization's iterations. These data will be available on the directory `ExpOptimDuffing` which contains data for sample sets containing 10, 20 and 25 samples. 
+The file `OptiExp.py` generates data of Bayesian Optimization's iterations. These data will be available on the directory `ExpOptimDuffing` which contains data for sample sets containing 10, 20 and 25 samples. Results are provided along BO iterations on `CSV` files and acquisition and objective functions are plotted in 2D and 3D.
+
+The following pictures show the evolution of the acquisition and objective functions along BO's iterations applied on the Optimization of the Duffing Oscillator (minimization of the maximum of the acceleration along the frequency bandwidth $[0,2.5]$ ($\mathrm{rad}\cdot\mathrm{s}^-1$)). The initial sampling obtained with LHS contains 10 sample points.
+
+Acquisition function               |  Objective function
+:---------------------------------:|:-------------------------:
+![](./illus/anim_10_contourEI.gif) |  ![](./illus/anim_10_contourObj.gif)
+![](./illus/anim_10_surfaceEI.gif) |  ![](./illus/anim_10_surfaceObj.gif)
+
 
 ### Versions
 
-The code has been executed with the following versions of Python and libraries:
+The code has been executed without any issues with the following versions of Python and libraries:
 ``````
 - Python 3.10.9
 - numpy 1.26.2
@@ -27,7 +51,8 @@ The code has been executed with the following versions of Python and libraries:
 - pandas 2.1.3
 - torch 2.1.1
 - botorch 0.9.4
-- gpytorch==1.11
+- gpytorch 1.11
+- pydoe 0.3.8
 ``````
 
 <!-- ## How to cite

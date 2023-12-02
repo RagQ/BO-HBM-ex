@@ -18,6 +18,8 @@ import os
 import sys
 import time
 
+plt.rcParams["text.usetex"] = True
+
 
 import bogp_lib as bogp
 from botorch.utils.transforms import normalize, unnormalize
@@ -159,6 +161,9 @@ def ExpOpti(ns, nb=0):
     )
     ax1.set_xlim(0.1, 1)
     ax1.set_ylim(0.1, 2)
+    ax1.set_xlabel(r'$\xi [-]$')
+    ax1.set_ylabel(r'$k_{nl} [\mathrm{N}/\mathrm{m}]$')
+    ax1.set_title(r'Objective Function')
     ax1.plot(  #Initial Samples
         Xs[:, 0],
         Xs[:, 1],
@@ -194,6 +199,9 @@ def ExpOpti(ns, nb=0):
         markersize=8,)
     ax2.set_xlim(0.1, 1)
     ax2.set_ylim(0.1, 2)
+    ax2.set_xlabel(r'$\xi [-]$')
+    ax2.set_ylabel(r'$k_{nl} [\mathrm{N}/\mathrm{m}]$')
+    ax2.set_title(r'Expected Improvement')
     plt.savefig(os.path.join(workdir, "ContourCEI_" + f"{it:02}" + ".pdf"))
     plt.close()
     
@@ -205,6 +213,10 @@ def ExpOpti(ns, nb=0):
     ax1.set_xlim(0.1, 1)
     ax1.set_ylim(0.1, 2)
     ax1.set_zlim(0.,4.5)
+    ax1.set_xlabel(r'$\xi [-]$')
+    ax1.set_ylabel(r'$k_{nl} [\mathrm{N}/\mathrm{m}]$')
+    ax1.set_zlabel(r'$F_{\mathrm{obj}}(\xi,k_{nl}$')
+    ax1.set_title(r'Objective Function')
     ax1.plot(  #Initial Samples
         numpy.array(Xs[:, 0]),
         numpy.array(Xs[:, 1]),
@@ -245,6 +257,10 @@ def ExpOpti(ns, nb=0):
         markersize=8,)
     ax2.set_xlim(0.1, 1)
     ax2.set_ylim(0.1, 2)
+    ax2.set_xlabel(r'$\xi [-]$')
+    ax2.set_ylabel(r'$k_{nl} [\mathrm{N}/\mathrm{m}]$')
+    ax2.set_zlabel(r'$EI(\xi,k_{nl})$')
+    ax2.set_title(r'Expected Improvement')
     plt.savefig(os.path.join(workdir, "SurfaceCEI_" + f"{it:02}" + ".pdf"))
     plt.close()
 
@@ -370,6 +386,9 @@ def ExpOpti(ns, nb=0):
         )
         ax1.set_xlim(0.1, 1)
         ax1.set_ylim(0.1, 2)
+        ax1.set_xlabel(r'$\xi [-]$')
+        ax1.set_ylabel(r'$k_{nl} [\mathrm{N}/\mathrm{m}]$')
+        ax1.set_title(r'Objective Function')
         ax1.plot(  #Initial Samples
             Xs[:, 0],
             Xs[:, 1],
@@ -423,6 +442,9 @@ def ExpOpti(ns, nb=0):
             markersize=8,)
         ax2.set_xlim(0.1, 1)
         ax2.set_ylim(0.1, 2)
+        ax2.set_xlabel(r'$\xi [-]$')
+        ax2.set_ylabel(r'$k_{nl} [\mathrm{N}/\mathrm{m}]$')
+        ax2.set_title(r'Expected Improvement')
         plt.savefig(os.path.join(workdir, "ContourCEI_" + f"{it:02}" + ".pdf"))
         plt.close()
         
@@ -435,6 +457,10 @@ def ExpOpti(ns, nb=0):
         ax1.set_xlim(0.1, 1)
         ax1.set_ylim(0.1, 2)
         ax1.set_zlim(0.,4.5)
+        ax1.set_xlabel(r'$\xi [-]$')
+        ax1.set_xlabel("$k_{nl} [\mathrm{N}/\mathrm{m}]$")
+        ax1.set_zlabel(r'$F_{\mathrm{obj}}(\xi,k_{nl}$')
+        ax1.set_title(r'Objective Function')
         ax1.plot(  #Initial Samples
             numpy.array(Xs[:, 0]),
             numpy.array(Xs[:, 1]),
@@ -497,6 +523,10 @@ def ExpOpti(ns, nb=0):
             markersize=8,)
         ax2.set_xlim(0.1, 1)
         ax2.set_ylim(0.1, 2)
+        ax2.set_xlabel(r'$\xi [-]$')
+        ax2.set_xlabel("$k_{nl} [\mathrm{N}/\mathrm{m}]$")
+        ax2.set_zlabel(r'$EI(\xi,k_{nl})$')
+        ax2.set_title(r'Expected Improvement')
         plt.savefig(os.path.join(workdir, "SurfaceCEI_" + f"{it:02}" + ".pdf"))
         plt.close()
 
@@ -530,7 +560,6 @@ def ExpOpti(ns, nb=0):
 
     return dfg
 
-ns_list=[15]
 
 dflist = []
 dfStat = pandas.DataFrame()
