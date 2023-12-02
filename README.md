@@ -24,7 +24,9 @@ Following pictures show $\ddot{q}_{\mathrm{RMS}}$ for a few values of $k_{nl}$ f
 (c)|(d)
 ![Arms_xi50](illus/Arms_xi50.png) |  ![Arms_xi100](/illus/Arms_xi100.png)
 
-Animations of $q_{\mathrm{RMS}}$ (a) and $\ddot {q}_{\mathrm{RMS}}$ (b) of large set of values of $k_{nl}$ for $\xi=0.15$:
+Animations of $q_{\mathrm{RMS}}$ (a) and $\ddot {q}$  (b) of large set of values of $k_{nl}$ for $\xi=0.15$:
+
+<!-- _{\mathrm{RMS}}$ -->
 
 (a)|(b)
 :---:|:---:
