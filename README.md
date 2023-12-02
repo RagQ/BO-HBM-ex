@@ -37,8 +37,8 @@ The following pictures show the evolution of the acquisition and objective funct
 
 Acquisition function               |  Objective function
 :---------------------------------:|:-------------------------:
-![](./illus/anim_10_contourEI.gif) |  ![](./illus/anim_10_contourObj.gif)
-![](./illus/anim_10_surfaceEI.gif) |  ![](./illus/anim_10_surfaceObj.gif)
+![](./illus/anim_10_contourEI-optim.gif) |  ![](./illus/anim_10_contourObj-optim.gif)
+![](./illus/anim_10_surfaceEI-optim.gif) |  ![](./illus/anim_10_surfaceObj-optim.gif)
 
 
 ### Versions
