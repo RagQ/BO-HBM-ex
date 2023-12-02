@@ -18,11 +18,11 @@ The file `respDuffing.py` provides frequencies responses for acceleration on PDF
 
 $\xi=0.15$                 |  $\xi=0.3$
 :-------------------------:|:-------------------------:
-![Arms_xi15](/illus/Arms_xi15.png) |  ![Arms_xi30](/illus/Arms_xi30.png)
+![Arms_xi15](illus/Arms_xi15.png) |  ![Arms_xi30](/illus/Arms_xi30.png)
 
 $\xi=0.5$                  |  $\xi=1$
 :-------------------------:|:-------------------------:
-![Arms_xi50](/illus/Arms_xi50.png) |  ![Arms_xi100](/illus/Arms_xi100.png)
+![Arms_xi50](illus/Arms_xi50.png) |  ![Arms_xi100](/illus/Arms_xi100.png)
 
 Animations of large set of values of $k_{nl}$ for $\xi=0.15$:
 $q_{\mathrm{RMS}}$         |  $\ddot{q}_{\mathrm{RMS}}$
