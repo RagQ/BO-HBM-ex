@@ -18,16 +18,16 @@ The file `respDuffing.py` provides frequencies responses for acceleration on PDF
 
 $\xi=0.15$                 |  $\xi=0.3$
 :-------------------------:|:-------------------------:
-![](./illus/Arms_xi15.png) |  ![](./illus/Arms_xi30.png)
+![Arms_xi15](/illus/Arms_xi15.png) |  ![Arms_xi30](/illus/Arms_xi30.png)
 
 $\xi=0.5$                  |  $\xi=1$
 :-------------------------:|:-------------------------:
-![](./illus/Arms_xi50.png) |  ![](./illus/Arms_xi100.png)
+![Arms_xi50](/illus/Arms_xi50.png) |  ![Arms_xi100](/illus/Arms_xi100.png)
 
 Animations of large set of values of $k_{nl}$ for $\xi=0.15$:
 $q_{\mathrm{RMS}}$         |  $\ddot{q}_{\mathrm{RMS}}$
 :-------------------------:|:-------------------------:
-![](./illus/anim_Drms.gif) |  ![](./illus/anim_Arms.gif)
+![anim_Drms](/illus/anim_Drms.gif) |  ![anim_Arms](/illus/anim_Arms.gif)
 
 ### Run Bayesian Optimization on Duffing oscillator
 
@@ -37,8 +37,8 @@ The following pictures show the evolution of the acquisition and objective funct
 
 Acquisition function               |  Objective function
 :---------------------------------:|:-------------------------:
-![](./illus/anim_10_contourEI-optim.gif) |  ![](./illus/anim_10_contourObj-optim.gif)
-![](./illus/anim_10_surfaceEI-optim.gif) |  ![](./illus/anim_10_surfaceObj-optim.gif)
+![anim_10_contourEI](/illus/anim_10_contourEI-optim.gif) |  ![anim_10_contourObj](/illus/anim_10_contourObj-optim.gif)
+![anim_10_surfaceEI](/illus/anim_10_surfaceEI-optim.gif) |  ![anim_10_surfaceObj](/illus/anim_10_surfaceObj-optim.gif)
 
 
 ### Versions
