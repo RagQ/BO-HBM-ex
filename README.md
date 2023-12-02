@@ -16,34 +16,17 @@ The Python's scripts can be run only with Python 3.
 ### Run solver of Duffing oscillator
 The file `respDuffing.py` provides frequencies responses for acceleration on PDF pictures for $\xi=\{0.15, 0.3, 0.5, 1.\}$ and $k_{nl}=\{0.25,0.5,0.75,...,2\}$. Pictures are stored in `ParamDuffing` folder.
 
+Following pictures show $\ddot{q}_{\mathrm{RMS}}$ for a few values of $k_{nl}$ for $\xi=0.15$ (a), $\xi=0.3$ (b), $\xi=0.5$ (c) and  $\xi=1$ (d).
 
-![Arms_xi15](illus/Arms_xi15.png) 
-![Arms_xi30](/illus/Arms_xi30.png)
-
-![Arms_xi50](illus/Arms_xi50.png) 
-![Arms_xi100](/illus/Arms_xi100.png)
-
-![anim_Drms](/illus/anim_Drms.gif) 
-![anim_Arms](/illus/anim_Arms.gif)
-
-
-
-
-![Arms_xi15](illus/Arms_xi15.png) | ![Arms_xi30](/illus/Arms_xi30.png)
+(a)|(b)
 :---:|:---:
-AA | $\xi=0.3$ 
-
-$\xi=0.15$ | $\xi=0.3$
-:---:|:---:
-![Arms_xi15](illus/Arms_xi15.png) |  ![Arms_xi30](/illus/Arms_xi30.png)
-
-$\xi=0.5$ | $\xi=1$
-:---:|:---:
+![Arms_xi15](illus/Arms_xi15.png) | ![Arms_xi30](illus/Arms_xi30.png)
+(c)|(d)
 ![Arms_xi50](illus/Arms_xi50.png) |  ![Arms_xi100](/illus/Arms_xi100.png)
 
-Animations of large set of values of $k_{nl}$ for $\xi=0.15$:
-$q_{\mathrm{RMS}}$         |  $\ddot{q}_{\mathrm{RMS}}$
-:---:|:---:
+Animations of $q_{\mathrm{RMS}}$ (a) and $\ddot{q}_{\mathrm{RMS}}$ (b) of large set of values of $k_{nl}$ for $\xi=0.15$:
+(a)|(b)
+:---:|:---:)
 ![anim_Drms](/illus/anim_Drms.gif) |  ![anim_Arms](/illus/anim_Arms.gif)
 
 ### Run Bayesian Optimization on Duffing oscillator
