@@ -16,6 +16,17 @@ The Python's scripts can be run only with Python 3.
 ### Run solver of Duffing oscillator
 The file `respDuffing.py` provides frequencies responses for acceleration on PDF pictures for $\xi=\{0.15, 0.3, 0.5, 1.\}$ and $k_{nl}=\{0.25,0.5,0.75,...,2\}$. Pictures are stored in `ParamDuffing` folder.
 
+
+![Arms_xi15](illus/Arms_xi15.png) 
+![Arms_xi30](/illus/Arms_xi30.png)
+
+![Arms_xi50](illus/Arms_xi50.png) 
+![Arms_xi100](/illus/Arms_xi100.png)
+
+![anim_Drms](/illus/anim_Drms.gif) 
+![anim_Arms](/illus/anim_Arms.gif)
+
+
 $\xi=0.15$                 |  $\xi=0.3$
 :-------------------------:|:-------------------------:
 ![Arms_xi15](illus/Arms_xi15.png) |  ![Arms_xi30](/illus/Arms_xi30.png)
