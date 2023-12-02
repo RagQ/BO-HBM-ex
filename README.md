@@ -31,17 +31,17 @@ AA | BB
 :---:|:---:
 ![Arms_xi15](illus/Arms_xi15.png) | ![Arms_xi30](/illus/Arms_xi30.png)
 
-$\xi=0.15$                 |  $\xi=0.3$
-:-------------------------:|:-------------------------:
+$\xi=0.15$ | $\xi=0.3$
+:---:|:---:
 ![Arms_xi15](illus/Arms_xi15.png) |  ![Arms_xi30](/illus/Arms_xi30.png)
 
 $\xi=0.5$                  |  $\xi=1$
-:-------------------------:|:-------------------------:
+:---:|:---:
 ![Arms_xi50](illus/Arms_xi50.png) |  ![Arms_xi100](/illus/Arms_xi100.png)
 
 Animations of large set of values of $k_{nl}$ for $\xi=0.15$:
 $q_{\mathrm{RMS}}$         |  $\ddot{q}_{\mathrm{RMS}}$
-:-------------------------:|:-------------------------:
+:---:|:---:
 ![anim_Drms](/illus/anim_Drms.gif) |  ![anim_Arms](/illus/anim_Arms.gif)
 
 ### Run Bayesian Optimization on Duffing oscillator
@@ -51,7 +51,7 @@ The file `OptiExp.py` generates data of Bayesian Optimization's iterations. Thes
 The following pictures show the evolution of the acquisition and objective functions along BO's iterations applied on the Optimization of the Duffing Oscillator (minimization of the maximum of the acceleration along the frequency bandwidth $[0,2.5]$ ($\mathrm{rad}\cdot\mathrm{s}^-1$)). The initial sampling obtained with LHS contains 10 sample points.
 
 Acquisition function               |  Objective function
-:---------------------------------:|:-------------------------:
+:---:|:---:
 ![anim_10_contourEI](/illus/anim_10_contourEI-optim.gif) |  ![anim_10_contourObj](/illus/anim_10_contourObj-optim.gif)
 ![anim_10_surfaceEI](/illus/anim_10_surfaceEI-optim.gif) |  ![anim_10_surfaceObj](/illus/anim_10_surfaceObj-optim.gif)
 
