@@ -14,9 +14,9 @@ Get the source code from this repository. The example can be run after installat
 The Python's scripts can be run only with Python 3.
 
 ### Run solver of Duffing oscillator
-The file `respDuffing.py` provides frequencies responses for acceleration on PDF pictures for $\xi=\{0.15, 0.3, 0.5, 1.\}$ and $k_{nl}=\{0.25,0.5,0.75,...,2\}$. Pictures are stored in `ParamDuffing` folder.
+The file `respDuffing.py` provides frequencies responses for acceleration on PDF pictures for $`\xi=\{0.15, 0.3, 0.5, 1.\}`$ and $`k_{nl}=\{0.25,0.5,0.75,...,2\}`$. Pictures are stored in `ParamDuffing` folder.
 
-Following pictures show $\ddot{q}_{\mathrm{RMS}}$ for a few values of $k_{nl}$ for $\xi=0.15$ (a), $\xi=0.3$ (b), $\xi=0.5$ (c) and  $\xi=1$ (d).
+Following pictures show $\ddot{q}_ {\mathrm{RMS}}$ for a few values of $k_ {nl}$ for $\xi=0.15$ (a), $\xi=0.3$ (b), $\xi=0.5$ (c) and  $\xi=1$ (d).
 
 (a)|(b)
 :---:|:---:
@@ -24,7 +24,7 @@ Following pictures show $\ddot{q}_{\mathrm{RMS}}$ for a few values of $k_{nl}$ f
 (c)|(d)
 ![Arms_xi50](illus/Arms_xi50.png) |  ![Arms_xi100](/illus/Arms_xi100.png)
 
-Animations of $q_{\mathrm{RMS}}$ (a) and $\ddot{q}$$_{\mathrm{RMS}}$  (b) of large set of values of $k_{nl}$ for $\xi=0.15$:
+Animations of $q_ {\mathrm{RMS}}$ (a) and $\ddot{q}_ {\mathrm{RMS}}$  (b) of large set of values of $k_{nl}$ for $\xi=0.15$:
 
 <!-- _{\mathrm{RMS}}$ -->
 
