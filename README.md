@@ -4,6 +4,20 @@
 
 The Python's tool `BO-HBM-ex` shows an example of the application of Bayesian Optimization [1] on a Duffing problem [2]. The Duffing's oscillator problem is here solved using Harmonic Balance Method and a continuation technique.
 
+<img src="illus/duffing_scheme.png" width="200" ><br>
+Duffing oscillator scheme. 
+
+The optimization problem can be written:
+
+------------
+
+Find $`(k_{nl}^*,\xi^*)`$ such as 
+
+$`(k_{nl}^*,\xi^*)=\underset{(k_{nl},\xi)\in\mathcal{D}}{\arg\min}\,\underset{\omega\in[\omega_l,\omega_u]}{\max} \ddot{q}_{\mathrm{RMS}}(k_{nl},\xi,\omega)`$
+
+-------------
+
+
 ## Installation
 
 Get the source code from this repository. The example can be run after installation of dependencies with `pip install -r requirements.txt`.
