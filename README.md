@@ -1,4 +1,6 @@
 # BO-HBM-ex
+<!-- [![GitHub license](https://img.shields.io/github/license/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex) [![GitHub release](https://img.shields.io/github/release/ragq/BO-HBM-ex.svg)](https://github.com/ragq/BO-HBM-ex/releases/) [![GitHub stars](https://img.shields.io/github/stars/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex/stargazers) [![DOI](https://zenodo.org/badge/DOI/xxx/yyy.svg)](https://doi.org/xxx/zenodo.yyy) -->
+
 
 ## Description
 
@@ -28,9 +30,9 @@ Get the source code from this repository. The example can be run after installat
 The Python's scripts can be run only with Python 3.
 
 ### Run solver of Duffing oscillator
-The file `respDuffing.py` provides frequencies responses for acceleration on PDF pictures for $`\xi=\{0.15, 0.3, 0.5, 1.\}`$ ($[\mathrm{kg}/\mathrm{s}]$) and $`k_{nl}=\{0.25,0.5,0.75,...,2\}`$ ($[\mathrm{N}/\mathrm{m}]$) . Pictures are stored in `ParamDuffing` folder.
+The file `respDuffing.py` provides frequencies responses for acceleration on PDF pictures for $`\xi=\{0.15, 0.3, 0.5, 1.\}`$ ($[\mathrm{kg}/\mathrm{s}]$) and $`k_{nl}=\{0.25,0.5,0.75,...,2\}`$ ($[\mathrm{N}/\mathrm{m}^{-3}]$) . Pictures are stored in `ParamDuffing` folder.
 
-Following pictures show $\ddot{q}_ {\mathrm{RMS}}$ for a few values of $k_ {nl}$ for $\xi=0.15\,\mathrm{kg}/\mathrm{s}$ (a), $\xi=0.3\,\mathrm{kg}/\mathrm{s}$ (b), $\xi=0.5\,\mathrm{kg}/\mathrm{s}$ (c) and  $\xi=1\,\mathrm{kg}/\mathrm{s}$ (d).
+Following pictures show $\ddot{q}_ {\mathrm{RMS}}$ for a few values of $k_ {nl}$ for $`\xi=0.15\,\mathrm{kg}/\mathrm{s}`$ (a), $`\xi=0.3\,\mathrm{kg}/\mathrm{s}`$ (b), $`\xi=0.5\,\mathrm{kg}/\mathrm{s}`$ (c) and  $`\xi=1\,\mathrm{kg}/\mathrm{s}`$ (d).
 
 (a)|(b)
 :---:|:---:
@@ -38,13 +40,13 @@ Following pictures show $\ddot{q}_ {\mathrm{RMS}}$ for a few values of $k_ {nl}$
 (c)|(d)
 ![Arms_xi50](illus/Arms_xi50.png) |  ![Arms_xi100](/illus/Arms_xi100.png)
 
-Animations of $q_ {\mathrm{RMS}}$ (a) and $\ddot{q}_ {\mathrm{RMS}}$  (b) of large set of values of $k_{nl}$ for $\xi=0.15\,\mathrm{kg}/\mathrm{s}$:
+Animations of $q_ {\mathrm{RMS}}$ (a) and $\ddot{q}_ {\mathrm{RMS}}$  (b) of large set of values of $k_{nl}$ for $`\xi=0.15\,\mathrm{kg}/\mathrm{s}`$:
 
 <!-- _{\mathrm{RMS}}$ -->
 
 (a)|(b)
 :---:|:---:
-![anim_Drms](/illus/anim_Drms.gif) |  ![anim_Arms](/illus/anim_Arms.gif)
+![anim_Drms](/illus/anim_Drms-optim.gif) |  ![anim_Arms](/illus/anim_Arms-optim.gif)
 
 ### Run Bayesian Optimization on Duffing oscillator
 
@@ -73,6 +75,8 @@ The code has been executed without any issues with the following versions of Pyt
 ``````
 
 <!-- ## How to cite
+
+This repo is relative to the PhD thesis of [Quentin~Ragueneau](https://www.lmssc.cnam.fr/fr/user/209) achieved at [LMSSC](https://www.lmssc.cnam.fr) under the supervision of [Antoine~Legay](https://www.lmssc.cnam.fr/fr/equipe/permanents/antoine-legay) and [Luc~Laurent](https://www.lmssc.cnam.fr/fr/equipe/luc-laurent).
 
 Please use the following citation reference if you use the code:
 
