@@ -58,7 +58,7 @@ plt.ylim(Arms_np.min(), Arms_np.max())
 for i in range(len(knl_list)):
     plt.plot(f_list[i], Arms_list[i])
 
-plt.ylabel(r"$\ddot{q}_{\rm RMS} [\mathrm{m}\cdot\mathrm{s}^{-1}]$")
+plt.ylabel(r"$\ddot{q}_{\rm RMS} [\mathrm{m}\cdot\mathrm{s}^{-2}]$")
 plt.xlabel("$\omega [\mathrm{rad}\cdot\mathrm{s}^{-1}]$")
 
 
@@ -70,7 +70,7 @@ for i in range(len(knl_list)):
     plt.ylabel(r"$q_{\rm RMS} [\mathrm{m}]$")
     plt.xlabel("$\omega [\mathrm{rad}\cdot\mathrm{s}^{-1}]$")
     plt.title(
-        "$\displaystyle k_{{nl}}={} \mathrm{{N}}/\mathrm{{m}}$".format(
+        "$\displaystyle k_{{nl}}={} \mathrm{{N}}/\mathrm{{m}}^{-3}$".format(
             latex_float(knl_list[i])
         )
     )
@@ -85,10 +85,10 @@ for i in range(len(knl_list)):
     plt.xlim(f_np.min(), f_np.max())
     plt.ylim(Arms_np.min(), Arms_np.max())
     plt.plot(f_list[i], Arms_list[i])
-    plt.ylabel(r"$\ddot{q}_{\rm RMS} [\mathrm{m}\cdot\mathrm{s}^{-1}]$")
+    plt.ylabel(r"$\ddot{q}_{\rm RMS} [\mathrm{m}\cdot\mathrm{s}^{-2}]$")
     plt.xlabel("$\omega\, [\mathrm{rad}\cdot\mathrm{s}^{-1}]$")
     plt.title(
-        "$\displaystyle k_{{nl}}={} \mathrm{{N}}/\mathrm{{m}}$".format(
+        "$\displaystyle k_{{nl}}={} \mathrm{{N}}/\mathrm{{m}}^{-3}$".format(
             latex_float(knl_list[i])
         )
     )
