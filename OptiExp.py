@@ -215,7 +215,7 @@ def ExpOpti(ns, nb=0):
     ax1.set_zlim(0.,4.5)
     ax1.set_xlabel(r'$\xi [-]$')
     ax1.set_ylabel(r'$k_{nl} [\mathrm{N}/\mathrm{m}]$')
-    ax1.set_zlabel(r'$F_{\mathrm{obj}}(\xi,k_{nl}$')
+    ax1.set_zlabel(r'$F_{\mathrm{obj}}(\xi,k_{nl})$')
     ax1.set_title(r'Objective Function')
     ax1.plot(  #Initial Samples
         numpy.array(Xs[:, 0]),
@@ -459,7 +459,7 @@ def ExpOpti(ns, nb=0):
         ax1.set_zlim(0.,4.5)
         ax1.set_xlabel(r'$\xi [-]$')
         ax1.set_xlabel("$k_{nl} [\mathrm{N}/\mathrm{m}]$")
-        ax1.set_zlabel(r'$F_{\mathrm{obj}}(\xi,k_{nl}$')
+        ax1.set_zlabel(r'$F_{\mathrm{obj}}(\xi,k_{nl})$')
         ax1.set_title(r'Objective Function')
         ax1.plot(  #Initial Samples
             numpy.array(Xs[:, 0]),
