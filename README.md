@@ -28,7 +28,7 @@ Get the source code from this repository. The example can be run after installat
 The Python's scripts can be run only with Python 3.
 
 ### Run solver of Duffing oscillator
-The file `respDuffing.py` provides frequencies responses for acceleration on PDF pictures for $`\xi=\{0.15, 0.3, 0.5, 1.\}`$ ($[\mathrm{kg}/\mathrm{s}]$) and $`k_{nl}=\{0.25,0.5,0.75,...,2\}`$ ($[\mathrm{N}/\mathrm{m}]$) . Pictures are stored in `ParamDuffing` folder.
+The file `respDuffing.py` provides frequencies responses for acceleration on PDF pictures for $`\xi=\{0.15, 0.3, 0.5, 1.\}`$ ($[\mathrm{kg}/\mathrm{s}]$) and $`k_{nl}=\{0.25,0.5,0.75,...,2\}`$ ($[\mathrm{N}/\mathrm{m}^{-3}]$) . Pictures are stored in `ParamDuffing` folder.
 
 Following pictures show $\ddot{q}_ {\mathrm{RMS}}$ for a few values of $k_ {nl}$ for $\xi=0.15\,\mathrm{kg}/\mathrm{s}$ (a), $\xi=0.3\,\mathrm{kg}/\mathrm{s}$ (b), $\xi=0.5\,\mathrm{kg}/\mathrm{s}$ (c) and  $\xi=1\,\mathrm{kg}/\mathrm{s}$ (d).
 
