@@ -46,7 +46,7 @@ Animations of $q_ {\mathrm{RMS}}$ (a) and $\ddot{q}_ {\mathrm{RMS}}$  (b) of lar
 
 (a)|(b)
 :---:|:---:
-![anim_Drms](/illus/anim_Drms.gif) |  ![anim_Arms](/illus/anim_Arms.gif)
+![anim_Drms](/illus/anim_Drms-optim.gif) |  ![anim_Arms](/illus/anim_Arms-optim.gif)
 
 ### Run Bayesian Optimization on Duffing oscillator
 
