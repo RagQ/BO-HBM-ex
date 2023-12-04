@@ -1,0 +1,55 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: BO-HBM-ex
+message: >-
+  Bayesian Optimization apply on non-linear vibration
+  problem solved with Harmonic Balance Method
+type: software
+authors:
+  - given-names: Quentin
+    family-names: Ragueneau
+    email: quentin.ragueneau@ingeliance.com
+    affiliation: 'LMSSC, Cnam, Ingéliance'
+    orcid: 'https://orcid.org/0000-0002-6380-129X'
+  # - name: Conservatoire national des arts et métiers
+  #   address: 292 rue Saint Martin
+  #   city: Paris
+  #   country: FR
+  #   post-code: '75003'
+  #   alias: Cnam
+  #   website: 'https://www.cnam.fr'
+  # - name: >-
+  #     Laboratoire de Mécanique des Structures et des
+  #     Systèmes Couplés
+  #   address: 2 rue Conté
+  #   city: Paris
+  #   country: FR
+  #   post-code: '75003'
+  #   alias: LMSSC
+  #   website: 'https://www.lmssc.cnam.fr'
+  # - name: Ingéliance Technologies
+  #   city: Mérignac
+  #   country: FR
+  #   alias: INGELIANCE
+  #   post-code: '33700'
+  #   address: 6 Rue Nicolas Leblanc
+  #   website: 'https://www.ingeliance.com'
+  - given-names: Luc
+    family-names: Laurent
+    email: luc.laurent@lecnam.net
+    affiliation: 'LMSSC, Cnam'
+    orcid: 'https://orcid.org/0000-0002-8935-5929'
+repository-code: 'https://github.com/RagQ/BO-HBM-ex/'
+abstract: >-
+  The Python's tool BO-HBM-ex shows an example of the
+  application of Bayesian Optimization on a Duffing problem.
+  The Duffing's oscillator problem is here solved using
+  Harmonic Balance Method and a continuation technique.
+keywords:
+  - Bayesian Optimization
+  - Non-linear vibrations
+  - Harmonic Balance Method
+  - Duffing Oscillator
+license: MIT
