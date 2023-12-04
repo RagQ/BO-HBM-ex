@@ -1,4 +1,6 @@
 # BO-HBM-ex
+<!-- [![GitHub license](https://img.shields.io/github/license/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex) [![GitHub release](https://img.shields.io/github/release/ragq/BO-HBM-ex.svg)](https://github.com/ragq/BO-HBM-ex/releases/) [![GitHub stars](https://img.shields.io/github/stars/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex/stargazers) [![DOI](https://zenodo.org/badge/DOI/xxx/yyy.svg)](https://doi.org/xxx/zenodo.yyy) -->
+
 
 ## Description
 
@@ -73,6 +75,8 @@ The code has been executed without any issues with the following versions of Pyt
 ``````
 
 <!-- ## How to cite
+
+This repo is relative to the PhD thesis of [Quentin~Ragueneau](https://www.lmssc.cnam.fr/fr/user/209) achieved at [LMSSC](https://www.lmssc.cnam.fr) under the supervision of [Antoine~Legay](https://www.lmssc.cnam.fr/fr/equipe/permanents/antoine-legay) and [Luc~Laurent](https://www.lmssc.cnam.fr/fr/equipe/luc-laurent).
 
 Please use the following citation reference if you use the code:
 
