@@ -76,7 +76,7 @@ The code has been executed without any issues with the following versions of Pyt
 
 ## How to cite
 
-This repo is relative to the [PhD thesis](https://www.theses.fr/s263751) of [Quentin Ragueneau](https://www.lmssc.cnam.fr/fr/user/209) achieved at [LMSSC](https://www.lmssc.cnam.fr) under the supervision of [Antoine Legay](https://www.lmssc.cnam.fr/fr/equipe/permanents/antoine-legay) and [Luc Laurent](https://www.lmssc.cnam.fr/fr/equipe/luc-laurent) in collaboration with [Ingeliance Technologies](https://www.ingeliance.com) and founded by [ANRT](https://www.anrt.asso.fr/fr) (Cifre 2020/0272.) 
+This repo is relative to the [PhD thesis](https://www.theses.fr/s263751) of [Quentin Ragueneau](https://www.lmssc.cnam.fr/fr/user/209) achieved at [LMSSC](https://www.lmssc.cnam.fr) under the supervision of [Antoine Legay](https://www.lmssc.cnam.fr/fr/equipe/permanents/antoine-legay) and [Luc Laurent](https://www.lmssc.cnam.fr/fr/equipe/luc-laurent) in collaboration with [Ingeliance Technologies](https://www.ingeliance.com) and founded by [ANRT](https://www.anrt.asso.fr/fr) (Cifre 2020/0272).
 
 Please use the following citation reference if you use the code:
 
