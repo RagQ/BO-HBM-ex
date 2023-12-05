@@ -80,7 +80,7 @@ This repo is relative to the [PhD thesis](https://www.theses.fr/s263751) of [Que
 
 Please use the following citation reference if you use the code:
 
-`Ragueneau, Q., & Laurent, L. (2023). BO-HBM-ex (v1.0.3). Zenodo. https://doi.org/10.5281/zenodo.102592910`
+`Ragueneau, Q., & Laurent, L. (2023). BO-HBM-ex (vxxx). Zenodo. https://doi.org/10.5281/zenodo.102592910`
 
 Bibtex entry:
 ``````
@@ -90,6 +90,7 @@ title        = {BO-HBM-ex},
 month        = dec,
 year         = 2023,
 publisher    = {Zenodo},
+version      = {vxxx}
 doi          = {10.5281/zenodo.10259290},
 url          = {https://doi.org/10.5281/zenodo.10259290}
 }
