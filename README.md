@@ -86,7 +86,7 @@ Bibtex entry:
 ``````
 @software{BO-HBM-ex-soft,
 author       = {Ragueneau, Quentin and Laurent, Luc},
-title        = {BO-HBM-ex},
+title        = {{BO-HBM-ex}},
 month        = dec,
 year         = 2023,
 publisher    = {Zenodo},
