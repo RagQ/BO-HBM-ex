@@ -1,7 +1,7 @@
 #### Libraries ####
-#### provided in CBO-HBM-ex ####
+#### provided in BO-HBM-ex ####
 #### Author: Quentin Ragueneau ####
-#### url: http://github.com/XXX/CBO-HBM-ex.git ####
+#### url: http://github.com/XXX/BO-HBM-ex.git ####
 #### License: MIT ####
 
 ### Evaluation of the objective function for the Duffing oscillator example
