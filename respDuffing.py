@@ -1,7 +1,7 @@
 #### Main execution file ####
 #### provided in BO-HBM-ex ####
 #### Author: Quentin Ragueneau ####
-#### url: http://github.com/XXX/BO-HBM-ex.git ####
+#### url: http://github.com/RagQ/BO-HBM-ex.git ####
 #### License: MIT ####
 
 #### Information ####

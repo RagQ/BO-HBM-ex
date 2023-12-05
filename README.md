@@ -1,5 +1,5 @@
 # BO-HBM-ex
-<!-- [![GitHub license](https://img.shields.io/github/license/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex) [![GitHub release](https://img.shields.io/github/release/ragq/BO-HBM-ex.svg)](https://github.com/ragq/BO-HBM-ex/releases/) [![GitHub stars](https://img.shields.io/github/stars/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex/stargazers) [![DOI](https://zenodo.org/badge/DOI/xxx/yyy.svg)](https://doi.org/xxx/zenodo.yyy) -->
+[![GitHub license](https://img.shields.io/github/license/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex) [![GitHub release](https://img.shields.io/github/release/ragq/BO-HBM-ex.svg)](https://github.com/ragq/BO-HBM-ex/releases/) [![GitHub stars](https://img.shields.io/github/stars/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex/stargazers) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10259290.svg)](https://doi.org/10.5281/zenodo.10259290.)
 
 
 ## Description
@@ -74,28 +74,27 @@ The code has been executed without any issues with the following versions of Pyt
 - pydoe 0.3.8
 ``````
 
-<!-- ## How to cite
+## How to cite
 
-This repo is relative to the PhD thesis of [Quentin~Ragueneau](https://www.lmssc.cnam.fr/fr/user/209) achieved at [LMSSC](https://www.lmssc.cnam.fr) under the supervision of [Antoine~Legay](https://www.lmssc.cnam.fr/fr/equipe/permanents/antoine-legay) and [Luc~Laurent](https://www.lmssc.cnam.fr/fr/equipe/luc-laurent).
+This repo is relative to the [PhD thesis](https://www.theses.fr/s263751) of [Quentin Ragueneau](https://www.lmssc.cnam.fr/fr/user/209) achieved at [LMSSC](https://www.lmssc.cnam.fr) under the supervision of [Antoine Legay](https://www.lmssc.cnam.fr/fr/equipe/permanents/antoine-legay) and [Luc Laurent](https://www.lmssc.cnam.fr/fr/equipe/luc-laurent) in collaboration with [Ingeliance Technologies](https://www.ingeliance.com) and founded by [ANRT](https://www.anrt.asso.fr/fr) (Cifre 2020/0272.) 
 
 Please use the following citation reference if you use the code:
 
-`Q. Ragueneau and L. Laurent. , December 2023. Zenodo. https://doi.org/10.5281/zenodo.XXX``
+`Ragueneau, Q., & Laurent, L. (2023). BO-HBM-ex (v1.0.3). Zenodo. https://doi.org/10.5281/zenodo.102592910`
 
 Bibtex entry:
-
+``````
 @software{BO-HBM-ex-soft,
-author       = {Ragueneau, Qunetin and Laurent, Luc},
-title        = {},
+author       = {Ragueneau, Quentin and Laurent, Luc},
+title        = {BO-HBM-ex},
 month        = dec,
 year         = 2023,
 publisher    = {Zenodo},
-version      = {vxx},
-doi          = {10.5281/zenodo.XXX},
-url          = {https://doi.org/10.5281/zenodo.XXXX}
+doi          = {10.5281/zenodo.10259290},
+url          = {https://doi.org/10.5281/zenodo.10259290}
 }
-
-NB: version number and DOI must be adapted from [Zenodo's repository](https://doi.org/10.5281/zenodo.XXXX). -->
+``````
+NB: version number and DOI must be adapted from [Zenodo's repository](https://doi.org/10.5281/zenodo.10259290).
 
 ## License
 
@@ -107,8 +106,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## References
 ```

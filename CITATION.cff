@@ -7,11 +7,12 @@ message: >-
   Bayesian Optimization apply on non-linear vibration
   problem solved with Harmonic Balance Method
 type: software
+doi: 10.5281/zenodo.10259290
 authors:
   - given-names: Quentin
     family-names: Ragueneau
     email: quentin.ragueneau@ingeliance.com
-    affiliation: 'LMSSC, Cnam, Ingéliance'
+    affiliation: 'LMSSC, Cnam, Ingeliance'
     orcid: 'https://orcid.org/0000-0002-6380-129X'
   # - name: Conservatoire national des arts et métiers
   #   address: 292 rue Saint Martin
