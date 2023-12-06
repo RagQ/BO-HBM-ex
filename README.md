@@ -80,12 +80,12 @@ This repo is relative to the [PhD thesis](https://www.theses.fr/s263751) of [Que
 
 Please use the following citation reference if you use the code:
 
-`Ragueneau, Q., & Laurent, L. (2023). BO-HBM-ex (vxxx). Zenodo. https://doi.org/10.5281/zenodo.102592910`
+`Ragueneau, Q., Laurent, L. & Legay, A. (2023). BO-HBM-ex (vxxx). Zenodo. https://doi.org/10.5281/zenodo.102592910`
 
 Bibtex entry:
 ``````
 @software{BO-HBM-ex-soft,
-author       = {Ragueneau, Quentin and Laurent, Luc},
+author       = {Ragueneau, Quentin and Laurent, Luc and Legay, Antoine},
 title        = {{BO-HBM-ex}},
 month        = dec,
 year         = 2023,
