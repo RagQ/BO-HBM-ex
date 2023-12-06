@@ -1,5 +1,5 @@
 # BO-HBM-ex
-[![GitHub license](https://img.shields.io/github/license/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex) [![GitHub release](https://img.shields.io/github/release/ragq/BO-HBM-ex.svg)](https://github.com/ragq/BO-HBM-ex/releases/) [![GitHub stars](https://img.shields.io/github/stars/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex/stargazers) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10259290.svg)](https://doi.org/10.5281/zenodo.10259290.)
+[![GitHub license](https://img.shields.io/github/license/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex) [![GitHub release](https://img.shields.io/github/release/ragq/BO-HBM-ex.svg)](https://github.com/ragq/BO-HBM-ex/releases/) [![GitHub stars](https://img.shields.io/github/stars/ragq/BO-HBM-ex)](https://github.com/ragq/BO-HBM-ex/stargazers) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10259290.svg)](https://doi.org/10.5281/zenodo.10259290)
 
 
 ## Description
