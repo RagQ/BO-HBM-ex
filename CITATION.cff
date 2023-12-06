@@ -42,6 +42,11 @@ authors:
     email: luc.laurent@lecnam.net
     affiliation: 'LMSSC, Cnam'
     orcid: 'https://orcid.org/0000-0002-8935-5929'
+  - given-names: Antoine
+    family-names: Legay
+    email: antoine.legay@lecnam.net
+    affiliation: 'LMSSC, Cnam'
+    orcid: 'https://orcid.org/0000-0001-6836-3009'
 repository-code: 'https://github.com/RagQ/BO-HBM-ex/'
 abstract: >-
   The Python's tool BO-HBM-ex shows an example of the
