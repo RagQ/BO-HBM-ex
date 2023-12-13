@@ -22,7 +22,9 @@ $`(k_{nl}^*,\xi^*)=\underset{(k_{nl},\xi)\in\mathcal{D}}{\arg\min}\,\underset{\o
 
 ## Installation
 
-Get the source code from this repository. The example can be run after installation of dependencies with `pip install -r requirements.txt`.
+Get the source code from this repository. The example can be run after installation of dependencies with 
+
+```pip install -r requirements.txt```
 
 
 ## Usage
