@@ -230,7 +230,7 @@ def Build_dZ(w, m, xi, nh):  # Build dZ/dw
 def trigo_to_expo(
     qh, nh, Nt
 ):  # Fourier coefficients from trigonometric to exponential form
-    X_expo = numpy.zeros((nh + 1), "cfloat")
+    X_expo = numpy.zeros((nh + 1), complex)
     X_expo[0] = Nt * qh[0] + 0j
     for i in range(1, nh):
         X_expo[i] = Nt / 2 * (qh[(2 * i - 1) : 2 * i] - qh[2 * i : (2 * i + 1)] * 1j)
