@@ -23,6 +23,7 @@ from botorch.acquisition.analytic import (
     ConstrainedExpectedImprovement,
     LogConstrainedExpectedImprovement,
     ExpectedImprovement,
+    LogExpectedImprovement
 )
 from botorch.optim import optimize_acqf
 
@@ -161,7 +162,7 @@ def get_EI_fun(gp):
         expected improvement function for BO.
     """
     Zmin = torch.min(gp.train_targets)
-    EI_bo = ExpectedImprovement(gp, best_f=Zmin, maximize=False)
+    EI_bo = LogExpectedImprovement(gp, best_f=Zmin, maximize=False)
     return EI_bo
 
 
@@ -176,7 +177,7 @@ def get_EI(gp, Xtest):
         - array of evaluated Expected Improvement values by GP.
     """
     Zmin = torch.min(gp.train_targets)
-    EI_bo = ExpectedImprovement(gp, best_f=Zmin, maximize=False)
+    EI_bo = LogExpectedImprovement(gp, best_f=Zmin, maximize=False)
     Xt = Xtest.reshape(Xtest.shape[0], 1, Xtest.dim())
     return EI_bo(Xt).detach()
 
@@ -200,7 +201,7 @@ def get_EImax(gp, bounds, q=1, num_restarts=10, raw_samples=30):
 
     Zmin = torch.min(gp.train_targets)
 
-    EI = ExpectedImprovement(gp, best_f=Zmin, maximize=False)
+    EI = LogExpectedImprovement(gp, best_f=Zmin, maximize=False)
 
     candidate, Eimax = optimize_acqf(
         EI, bounds=bounds, q=q, num_restarts=num_restarts, raw_samples=raw_samples
@@ -356,7 +357,7 @@ def enrich2(
 
     Zmin = torch.min(gp.train_targets)
 
-    EI = ExpectedImprovement(gp, best_f=Zmin, maximize=False)
+    EI = LogExpectedImprovement(gp, best_f=Zmin, maximize=False)
 
     candidate, Eimax = optimize_acqf(
         EI, bounds=boundsaqf, q=q, num_restarts=num_restarts, raw_samples=raw_samples

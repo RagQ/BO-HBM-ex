@@ -4,3 +4,4 @@ pandas
 torch
 botorch
 pydoe
+loguru
