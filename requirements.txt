@@ -6,3 +6,4 @@ botorch
 pydoe
 loguru
 jupyterlab_latex
+ipywidgets
