@@ -330,7 +330,7 @@ def enrich2(
     raw_samples=30,
     Noptim=50,
 ):
-    """Enrichment of the GP using Expected Improvement function without noramlization of data
+    """Enrichment of the GP using Expected Improvement function without normalization of data
 
     Args:
         gp : initial train GP model.
