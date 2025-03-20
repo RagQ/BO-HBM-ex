@@ -1,0 +1,9 @@
+numpy
+matplotlib
+pandas
+botorch
+pydoe
+loguru
+jupyterlab_latex
+ipywidgets
+ipympl
