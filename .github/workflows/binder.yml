@@ -7,9 +7,13 @@ jobs:
     steps:
     - name: checkout files in repo
       uses: actions/checkout@main
+    - id: string
+      uses: ASzc/change-string-case-action@v6
+      with:
+        string: ${{ github.repository }}
     - name: cache binder build on mybinder.org
       uses: jupyterhub/repo2docker-action@master
       with:
         NO_PUSH: true
         MYBINDERORG_TAG: ${{ github.event.ref }} # This builds the container on mybinder.org with the branch that was pushed on.
-        IMAGE_NAME: ${{ lowercase(github.repository) }} # This is the name of the image on mybinder.org
+        IMAGE_NAME: ${{ steps.string.outputs.lowercase }} # This is the name of the image on mybinder.org
